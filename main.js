@@ -26,6 +26,32 @@ function getRow(firstRow, secondRow) {
 	}
 }
 
+console.log('в этой фразе: \"' + getRow(firstRow, secondRow) + '\" больше букв \"а\"');
+
 alert('в этой фразе: \"' + getRow(firstRow, secondRow) + '\" больше букв \"а\"');
 
-console.log('в этой фразе: \"' + getRow(firstRow, secondRow) + '\" больше букв \"а\"');
+//2
+const phone = prompt('напишите номер телефона');
+
+function formattedPhone(phone) {
+	let phoneArray = phone.split('');
+
+	for (let i = 0; i < phoneArray.length; i++) {
+		if (i === 2) {
+			phoneArray.splice(i, '', ' (');
+		} else if (i === 6) {
+			phoneArray.splice(i, '', ') ');
+		} else if (i === 10) {
+			phoneArray.splice(i, '', '-');
+		} else if (i === 13) {
+			phoneArray.splice(i, '', '-');
+		}
+	}
+
+	let result = phoneArray.join('');
+	return result;
+}
+
+console.log('отформатированный номер телефона теперь выглядит вот так: \"' + formattedPhone(phone));
+
+alert('отформатированный номер телефона теперь выглядит вот так: \"' + formattedPhone(phone));
