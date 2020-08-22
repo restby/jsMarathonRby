@@ -2,33 +2,34 @@
 //1
 const firstRow = prompt('напишите первую фразу');
 const secondRow = prompt('напишите вторую фразу');
+const CHAR = prompt('напишите букву');
 
 function getRow(firstRow, secondRow) {
-	function findSymbol(row) {
-		let count = 0;
+	let firstResult = findSymbol(firstRow, CHAR);
+	let secondResult = findSymbol(secondRow, CHAR);
 
-		for (let i = 0; i < row.length; i++) {
-			if (row.charAt(i) === 'а') {
-				count++
-			}
-		}
-		return count;
+	if (firstResult === secondResult) {
+		return 'в этих фразая: одинаковое кол-во букв ' + '"' + CHAR + '"';
 	}
 
-	let result1 = findSymbol(firstRow);
-
-	let result2 = findSymbol(secondRow);
-
-	if (result1 > result2) {
-		return firstRow;
-	} else {
-		return secondRow;
-	}
+	return firstRow > secondRow ? firstRow : secondRow;
 }
 
-console.log('в этой фразе: \"' + getRow(firstRow, secondRow) + '\" больше букв \"а\"');
+function findSymbol(row, char) {
+	let count = 0;
 
-alert('в этой фразе: \"' + getRow(firstRow, secondRow) + '\" больше букв \"а\"');
+	for (let i = 0; i < row.length; i++) {
+		if (row.charAt(i) === char) {
+			count++
+		}
+	}
+
+	return count;
+}
+
+console.log('в этой фразе: \"' + getRow(firstRow, secondRow) + '\" больше букв ' + '"' + CHAR + '"');
+
+alert('в этой фразе: \"' + getRow(firstRow, secondRow) + '\" больше букв ' + '"' + CHAR + '"');
 
 //2
 const phone = prompt('напишите номер телефона');
