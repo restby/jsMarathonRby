@@ -1,4 +1,5 @@
 const button = document.getElementById('btn-kick');
+const buttonElse = document.getElementById('btn-alterkick');
 const character = {
   name: 'Pikachu',
   defaultHP: 100,
@@ -21,6 +22,12 @@ button.addEventListener('click', function () {
   changeHP(random(20), enemy);
 });
 
+buttonElse.addEventListener('click', function () {
+  console.log('kick');
+  changeHP(random(40), character);
+  changeHP(random(40), enemy);
+});
+
 function random(num) {
   return Math.ceil(Math.random() * num);
 }
@@ -39,10 +46,11 @@ function renderHP(person) {
 }
 
 function changeHP(count, person) {
-  if (person.damageHP < count) {
-    person.damageHP = 0
-    console.log('персонаж проиграл');
+  if (person.damageHP < count || person.defaultHP === 0) {
+    person.damageHP = 0;
+    console.log('персонаж с именем:' + person.name + ' к сожалению проиграл!');
     button.disabled = true;
+    buttonElse.disabled = true;
 
   } else {
     person.damageHP -= count;
